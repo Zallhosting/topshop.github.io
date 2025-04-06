@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="red">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snapshop - Toko Online Profesional</title>
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Font & Icons -->
+    <link rel="stylesheet" href="assets/fonts/font-awesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    
+    <!-- Atom Background Animation -->
+    <style>
+        .atom-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: url('assets/images/atom-bg-red.svg');
+            background-size: cover;
+            animation: atomFloat 20s infinite linear;
+        }
+        
+        [data-theme="blue"] .atom-background {
+            background-image: url('assets/images/atom-bg-blue.svg');
+        }
+        
+        @keyframes atomFloat {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Atom Background -->
+    <div class="atom-background"></div>
+    
+    <!-- Header Profesional -->
+    <header class="animated-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" data-aos="fade-down">
+                    <img src="assets/images/logo.svg" alt="NamaToko">
+                </div>
+                
+                <nav class="main-nav" data-aos="fade-down" data-aos-delay="100">
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="produk.html">Produk</a></li>
+                        <li><a href="#kategori">Kategori</a></li>
+                        <li><a href="#promo">Promo</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions" data-aos="fade-down" data-aos-delay="200">
+                    <button class="theme-switcher" data-theme="blue">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="theme-switcher" data-theme="red">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    
+                    <a href="keranjang.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <a href="login.html" class="user-btn">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section dengan Animasi -->
+    <section class="hero animated-text" data-aos="zoom-in">
+        <div class="container">
+            <h1 data-aos="fade-up">Selamat Datang di <span>NamaToko</span></h1>
+            <p data-aos="fade-up" data-aos-delay="100">Temukan produk terbaik dengan harga spesial</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+                <a href="produk.html" class="btn-primary">Belanja Sekarang</a>
+                <a href="#promo" class="btn-secondary">Lihat Promo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produk Unggulan -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 data-aos="fade-up">Produk Unggulan</h2>
+            <div class="products-grid">
+                <!-- Produk akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <!-- Isi footer -->
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/theme-switcher.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html>
