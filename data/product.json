@@ -1,1 +1,9 @@
-[ ]
+[
+    {
+        "id": 1,
+        "name": "Smartphone X Pro",
+        "price": 8999000,
+        "discount": 10,
+        "image": "phone1.jpg",
+        "category": "elektronik"
+]
