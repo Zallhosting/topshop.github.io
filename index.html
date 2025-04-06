@@ -1,125 +1,345 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="red">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>snapshop - Toko Online Profesional</title>
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    
-    <!-- Font & Icons -->
-    <link rel="stylesheet" href="assets/fonts/font-awesome/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/themes.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
-    
-    <!-- Atom Background Animation -->
+    <title>E-Commerce Profesional</title>
+    <link rel="icon" href="https://brandslogos.com/wp-content/uploads/images/large/the-body-shop-logo-2.png">
     <style>
-        .atom-background {
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* === PARTICLE BACKGROUND (ATOM ANIMASI MERAH) === */
+        #particles-js {
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
             z-index: -1;
-            opacity: 0.1;
-            background-image: url('assets/images/atom-bg-red.svg');
-            background-size: cover;
-            animation: atomFloat 20s infinite linear;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
         
-        [data-theme="blue"] .atom-background {
-            background-image: url('assets/images/atom-bg-blue.svg');
+        /* === NAVBAR PROFESIONAL === */
+        .navbar {
+            background: linear-gradient(90deg, #d10000 0%, #1e00ff 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
         }
         
-        @keyframes atomFloat {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            animation: fadeIn 1.5s ease-in-out;
         }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            opacity: 0;
+            animation: slideDown 0.8s forwards;
+        }
+        
+        .nav-links a:hover {
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        
+        /* === HERO SECTION (ANIMASI TEKS MASUK) === */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #d10000;
+            opacity: 0;
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s 1s forwards;
+        }
+        
+        .cta-button {
+            background: linear-gradient(90deg, #d10000 0%, #1e00ff 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(209, 0, 0, 0.4);
+            opacity: 0;
+            animation: fadeInUp 1s 1.5s forwards;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(209, 0, 0, 0.6);
+        }
+        
+        /* === PRODUK SECTION === */
+        .products {
+            padding: 4rem 2rem;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e00ff;
+            opacity: 0;
+            animation: fadeIn 1s 2s forwards;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(209, 0, 0, 0.2);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d10000;
+            margin-bottom: 1rem;
+        }
+        
+        .buy-button {
+            background: linear-gradient(90deg, #d10000 0%, #1e00ff 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .buy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(209, 0, 0, 0.4);
+        }
+        
+        /* === ANIMASI CSS === */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes slideDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        /* === DELAY ANIMASI UNTUK TIAP PRODUK === */
+        .product-card:nth-child(1) { animation-delay: 2.2s; }
+        .product-card:nth-child(2) { animation-delay: 2.4s; }
+        .product-card:nth-child(3) { animation-delay: 2.6s; }
+        .product-card:nth-child(4) { animation-delay: 2.8s; }
     </style>
 </head>
 <body>
-    <!-- Atom Background -->
-    <div class="atom-background"></div>
+    <!-- PARTICLE BACKGROUND (ATOM ANIMASI) -->
+    <div id="particles-js"></div>
     
-    <!-- Header Profesional -->
-    <header class="animated-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo" data-aos="fade-down">
-                    <img src="assets/images/logo.svg" alt="NamaToko">
-                </div>
-                
-                <nav class="main-nav" data-aos="fade-down" data-aos-delay="100">
-                    <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="produk.html">Produk</a></li>
-                        <li><a href="#kategori">Kategori</a></li>
-                        <li><a href="#promo">Promo</a></li>
-                        <li><a href="#kontak">Kontak</a></li>
-                    </ul>
-                </nav>
-                
-                <div class="header-actions" data-aos="fade-down" data-aos-delay="200">
-                    <button class="theme-switcher" data-theme="blue">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <button class="theme-switcher" data-theme="red">
-                        <i class="fas fa-sun"></i>
-                    </button>
-                    
-                    <a href="keranjang.html" class="cart-btn">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
-                    </a>
-                    
-                    <a href="login.html" class="user-btn">
-                        <i class="fas fa-user"></i>
-                    </a>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="logo">SHOP<span style="color: #1e00ff;">PRO</span></a>
+        <div class="nav-links">
+            <a href="index.html" style="animation-delay: 0.2s;">Beranda</a>
+            <a href="produk.html" style="animation-delay: 0.4s;">Produk</a>
+            <a href="kontak html" style="animation-delay: 0.6s;">Kontak</a>
+        </div>
+    </nav>
+    
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Selamat Datang di website snapshop</h1>
+        <p>Temukan produk terbaik dengan harga spesial hanya untuk Anda!</p>
+        <button class="cta-button">Lihat Produk</button>
+    </section>
+    
+    <!-- PRODUK SECTION -->
+    <section class="products">
+        <h2 class="section-title">Produk Terbaru</h2>
+        <div class="product-grid">
+            <!-- PRODUK 1 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200?text=Produk+1" alt="Produk 1" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Produk Premium 1</h3>
+                    <p class="product-price">Rp 500.000</p>
+                    <button class="buy-button" onclick="redirectToWA('Produk Premium 1')">Beli Sekarang</button>
                 </div>
             </div>
-        </div>
-    </header>
-
-    <!-- Hero Section dengan Animasi -->
-    <section class="hero animated-text" data-aos="zoom-in">
-        <div class="container">
-            <h1 data-aos="fade-up">Selamat Datang di <span>NamaToko</span></h1>
-            <p data-aos="fade-up" data-aos-delay="100">Temukan produk terbaik dengan harga spesial</p>
-            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
-                <a href="produk.html" class="btn-primary">Belanja Sekarang</a>
-                <a href="#promo" class="btn-secondary">Lihat Promo</a>
+            
+            <!-- PRODUK 2 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200?text=Produk+2" alt="Produk 2" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Produk Premium 2</h3>
+                    <p class="product-price">Rp 750.000</p>
+                    <button class="buy-button" onclick="redirectToWA('Produk Premium 2')">Beli Sekarang</button>
+                </div>
+            </div>
+            
+            <!-- PRODUK 3 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200?text=Produk+3" alt="Produk 3" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Produk Premium 3</h3>
+                    <p class="product-price">Rp 1.000.000</p>
+                    <button class="buy-button" onclick="redirectToWA('Produk Premium 3')">Beli Sekarang</button>
+                </div>
+            </div>
+            
+            <!-- PRODUK 4 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200?text=Produk+4" alt="Produk 4" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Produk Premium 4</h3>
+                    <p class="product-price">Rp 1.250.000</p>
+                    <button class="buy-button" onclick="redirectToWA('Produk Premium 4')">Beli Sekarang</button>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Produk Unggulan -->
-    <section class="featured-products">
-        <div class="container">
-            <h2 data-aos="fade-up">Produk Unggulan</h2>
-            <div class="products-grid">
-                <!-- Produk akan diisi oleh JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <!-- Isi footer -->
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/animations.js"></script>
-    <script src="assets/js/theme-switcher.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- JAVASCRIPT UNTUK ANIMASI & FUNGSI -->
     <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
+        // PARTICLE.JS (ATOM BACKGROUND)
+        document.addEventListener('DOMContentLoaded', function() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+            script.onload = function() {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                        "color": { "value": "#d10000" },
+                        "shape": { "type": "circle" },
+                        "opacity": { "value": 0.5, "random": true },
+                        "size": { "value": 3, "random": true },
+                        "line_linked": { "enable": true, "distance": 150, "color": "#d10000", "opacity": 0.4, "width": 1 },
+                        "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": { "enable": true, "mode": "repulse" },
+                            "onclick": { "enable": true, "mode": "push" },
+                            "resize": true
+                        }
+                    }
+                });
+            };
+            document.body.appendChild(script);
+        });
+        
+        // FUNGSI REDIRECT KE WHATSAPP
+        function redirectToWA(productName) {
+            const phone = "6285246691849";
+            const message = `Halo, saya ingin membeli *${productName}*. Apakah masih tersedia?`;
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+        
+        // ANIMASI SCROLL UNTUK TEKS
+        document.querySelectorAll('h1, h2, p, button, .product-card').forEach((el, index) => {
+            if (!el.style.animationDelay) {
+                el.style.animationDelay = `${index * 0.1}s`;
+            }
         });
     </script>
 </body>
